@@ -5,11 +5,12 @@ btnReg.onclick = (e) => {
   let id = document.querySelector('#id').value;
   let password = document.querySelector('#password').value;
   let passwordCh = document.querySelector('#password_2');
-  let storageId = sessionStorage.getItem(id);
+  let storageId = localStorage.getItem(id);
 
   if (password === passwordCh.value) {
     if (storageId === null) {
-      sessionStorage.setItem(id, password);
+      localStorage.setItem('id', id);
+      localStorage.setItem('password', password);
       alert('등록되었습니다.');
       window.location.href = 'login.html';
     } else {
