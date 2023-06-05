@@ -1,17 +1,108 @@
-const API_KEY = "api_key=d1f32f92c639fd0ff4f4bcc363027a26";
+export const API_KEY = "api_key=d1f32f92c639fd0ff4f4bcc363027a26";
 const BASE_URL = "https://api.themoviedb.org/3";
 const API_URL =
   BASE_URL +
-  "/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200&" +
+  "/discover/movie?movie/popular?language=ko-kr&page=1&sort_by=popularity.desc&" +
   API_KEY;
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
 const searchURL = BASE_URL + "/search/movie?" + API_KEY;
+// ------------------------------------------- url 정리
 
+// 영화 찾는 저널을 한 객체로 묶음
+const genres = [
+  {
+    id: 28,
+    name: "Action",
+  },
+  {
+    id: 16,
+    name: "Animation",
+  },
+  {
+    id: 35,
+    name: "Comedy",
+  },
+  {
+    id: 18,
+    name: "Drama",
+  },
+  {
+    id: 10751,
+    name: "Family",
+  },
+  {
+    id: 27,
+    name: "Horror",
+  },
+  {
+    id: 10402,
+    name: "Music",
+  },
+  {
+    id: 9648,
+    name: "Mystery",
+  },
+];
+// // --------------------------------
 const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
+const tagsEl = document.getElementById("tags");
+
+
+let selectedGenre = [];
+setGenre();
+function setGenre() {
+  tagsEl.innerHTML = "";
+  genres.forEach((genre) => {
+    const t = document.createElement("div");
+    t.classList.add("tag");
+    t.id = genre.id;
+    t.innerText = genre.name;
+    t.addEventListener("click", () => {
+      if (selectedGenre.length == 0) {
+        selectedGenre.push(genre.id);
+      } else {
+        if (selectedGenre.includes(genre.id)) {
+          selectedGenre.forEach((id, index) => {
+            if (id == genre.id) {
+              selectedGenre.splice(index, 1);
+            } //else {
+            //   selectedGenre.push(genre.id);  <<-----else의 겨우가 나올 수 없음 ㅡ>삭제,수정
+            // }
+          });
+        } else {
+          selectedGenre.push(genre.id);   // <<------새로운 장르 추가, 여기에 와야됩니다. 
+        }
+      }
+      console.log(selectedGenre);
+      getMovies(API_URL + "&with_genres=" + encodeURI(selectedGenre.join(",")));
+      highlightselction();
+    });
+    tagsEl.append(t);
+  });
+}
+// function으로 객체화한 영화 장르를 forEach로 html에 표현
+
+function highlightselction() {
+  const tags = document.querySelectorAll(".tag");
+  tags.forEach((tag) => {
+    tag.classList.remove("highlight");
+  });
+  if (selectedGenre.length !== 0) {
+    selectedGenre.forEach((id) => {
+      const highlightdTag = document.getElementById(id);
+      highlightdTag.classList.add("highlight");
+    });
+  }
+}
 
 getMovies(API_URL);
+
+let mainTitle = document.querySelector('#maintitle2');
+mainTitle.addEventListener('click', () => {
+  window.location.reload();
+})   //일단 홈페이지 초기화 되도록 바꿔 놓음  
 
 function getMovies(url) {
   fetch(url)
@@ -22,10 +113,12 @@ function getMovies(url) {
     });
 }
 
+let nowId;
+
 function showMovies(data) {
   main.innerHTML = "";
   data.forEach((movie) => {
-    const { title, poster_path, vote_average, overview } = movie;
+    const { title, poster_path, vote_average, overview, id } = movie;
     const movieE1 = document.createElement("div");
     movieE1.classList.add("movie");
     movieE1.innerHTML = `
@@ -35,16 +128,22 @@ function showMovies(data) {
       <h3>${title}</h3>
       <span class="${getColor(vote_average)}">${vote_average}</span>
       </div>
-
       <div class="overview">
       <h3>Overview</h3>
       ${overview}
     </div>
     </div>`;
+    movieE1.onclick = () => {
+      nowId = id;
+      window.location.href = "./detail.html"
+
+    };
 
     main.appendChild(movieE1);
   });
 }
+
+
 
 function getColor(vote) {
   if (vote >= 8) {
@@ -67,3 +166,5 @@ form.addEventListener("submit", (e) => {
     getMovies(API_URL);
   }
 });
+
+

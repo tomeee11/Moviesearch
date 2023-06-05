@@ -1,60 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>My Project</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-  </head>
-  <body>
-    <header>
-      <form id="form"></form>
-      <input type="text" placeholder="검색" id="search" class="search" />
-    </header>
-    <main id="main">
-      <div class="movie">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ECDdTAmWyzq8NgzxVYH4bGOw6ZN6o9XiGQ&usqp=CAU"
-          alt="image"
-        />
-        <div class="movie-info">
-          <h3>Movie Title</h3>
-          <span class="green">9.8</span>
-        </div>
 
-        <div class="overview">
-          <h3>Overview</h3>
-          이곳에 영화 줄거리 표시
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>My Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+  <script type="module" src="main.js" defer></script>
+
+
+
+</head>
+
+<body>
+  <header>
+    <form id="form">
+      <div id="maintitle">
+        <p id="maintitle2">HELLO CINEMA WORLD</p>
+      </div>
+      <input type="text" placeholder="Search" id="search" class="search" />
+    </form>
+  </header>
+  <div id="tags">
+    <div class="tag">Action</div>
+    <div class="tag">Adventure</div>
+    <div class="tag">Drama</div>
+    <div class="tag">Comedy</div>
+  </div>
+  <main id="main">
+    <div class="movie">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ECDdTAmWyzq8NgzxVYH4bGOw6ZN6o9XiGQ&usqp=CAU"
+        alt="image" />
+      <div class="movie-info">
+        <h3>Movie Title</h3>
+        <span class="green">평점</span>
       </div>
 
-      <div class="movie">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ECDdTAmWyzq8NgzxVYH4bGOw6ZN6o9XiGQ&usqp=CAU"
-          alt="image"
-        />
-        <div class="movie-info">
-          <h3>Movie Title</h3>
-          <span class="green">9.8</span>
-        </div>
+      <div class="overview">
+        <h3>Overview</h3>
+        이곳에 영화 줄거리 표시
+      </div>
+    </div>
 
-        <div class="overview">이곳에 영화 줄거리 표시</div>
+    <div class="movie">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ECDdTAmWyzq8NgzxVYH4bGOw6ZN6o9XiGQ&usqp=CAU"
+        alt="image" />
+      <div class="movie-info">
+        <h3>Movie Title</h3>
+        <span class="green">평점</span>
       </div>
 
-      <div class="movie">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ECDdTAmWyzq8NgzxVYH4bGOw6ZN6o9XiGQ&usqp=CAU"
-          alt="image"
-        />
-        <div class="movie-info">
-          <h3>Movie Title</h3>
-          <span class="green">9.8</span>
-        </div>
+      <div class="overview">이곳에 영화 줄거리 표시</div>
+    </div>
 
-        <div class="overview">이곳에 영화 줄거리 표시</div>
+    <div class="movie">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ECDdTAmWyzq8NgzxVYH4bGOw6ZN6o9XiGQ&usqp=CAU"
+        alt="image" />
+      <div class="movie-info">
+        <h3>Movie Title</h3>
+        <span class="green">평점</span>
       </div>
-    </main>
-    <script src="main.js"></script>
-  </body>
+
+      <div class="overview">이곳에 영화 줄거리 표시</div>
+    </div>
+  </main>
+
+</body>
+
+
 </html>
