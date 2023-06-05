@@ -67,6 +67,7 @@ function setGenre() {
           selectedGenre.forEach((id, index) => {
             if (id == genre.id) {
               selectedGenre.splice(index, 1);
+
             } //else {
             //   selectedGenre.push(genre.id);  <<-----else의 겨우가 나올 수 없음 ㅡ>삭제,수정
             // }
@@ -83,6 +84,10 @@ function setGenre() {
   });
 }
 // function으로 객체화한 영화 장르를 forEach로 html에 표현
+
+
+
+
 
 function highlightselction() {
   const tags = document.querySelectorAll(".tag");
@@ -133,11 +138,6 @@ function showMovies(data) {
       ${overview}
     </div>
     </div>`;
-    movieE1.onclick = () => {
-      nowId = id;
-      window.location.href = "./detail.html"
-
-    };
 
     main.appendChild(movieE1);
   });
