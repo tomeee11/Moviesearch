@@ -66,10 +66,10 @@ function setGenre() {
           selectedGenre.forEach((id, index) => {
             if (id == genre.id) {
               selectedGenre.splice(index, 1);
-            } else {
-              selectedGenre.push(genre.id);
             }
           });
+        } else {
+          selectedGenre.push(genre.id);
         }
       }
       console.log(selectedGenre);
