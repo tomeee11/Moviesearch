@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>영화관 좌석 예매</title>
-  <style>
-    .seat {
-      width: 30px;
-      height: 30px;
-      margin: 2px;
-      background-color: lightgray;
-      display: inline-block;
-      cursor: pointer;
-    }
+  <head>
+    <title>영화관 좌석 예매</title>
+    <style>
+      .seat {
+        width: 30px;
+        height: 30px;
+        margin: 2px;
+        background-color: lightgray;
+        display: inline-block;
+        cursor: pointer;
+      }
 
-    .selected {
-      background-color: black;
-    }
-  </style>
-</head>
-<body>
-  <h2>좌석을 선택해주세요</h2>
-  <div id="seatMap">
-    <!-- 좌석들이 동적으로 생성될 공간 -->
-  </div>
-  <button onclick="reserveSeats()">예매하기</button>
-  <script src="js/seats.js"></script>
-</body>
+      .selected {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>좌석을 선택해주세요</h2>
+    <div id="seatMap">
+      <!-- 좌석들이 동적으로 생성될 공간 -->
+    </div>
+    <button onclick="reserveSeats()">예매하기</button>
+    <script src="js/booking.js"></script>
+  </body>
 </html>
