@@ -18,6 +18,8 @@ input {
   border: 1px solid #797979;
   margin-left: 20px;
   border-radius: 3px;
+  background-color: #373b69;
+  color: white;
 }
 button {
   margin: 20px;
@@ -30,11 +32,16 @@ button {
   font-size: 20px;
   font-weight: bold;
   color: whitesmoke;
-  background: linear-gradient(90deg, royalblue, lightgreen);
+  background: linear-gradient(90deg, #22254b, #fff);
 }
 span {
   display: block;
   margin-left: 20px;
   color: red;
   font-style: italic;
+}
+
+body {
+  background-color: #22254b;
+  color: white;
 }

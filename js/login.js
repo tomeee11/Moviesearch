@@ -1,50 +1,47 @@
 window.onload = () => {
-  this.sessionStorage.setItem('username', 'my_id');
-  this.sessionStorage.setItem('password', 'my_password');
-};
-var input = document.getElementsByTagName('input');
-var login = document.getElementById('log-in');
-var form = document.querySelector('form');
-form.onsubmit = () => {
-  return false;
+  sessionStorage.setItem('logined', 'false');
 };
 
-login.onclick = () => {
-  if (input[0].value !== '' && input[0].value !== '') {
-    if (
-      input[0].value == sessionStorage.getItem('username') &&
-      sessionStorage.getItem('password')
-    ) {
-      form.onsubmit = () => {
-        return 1;
-      };
-      document.cookie = 'username' + input[0].value;
-      document.cookie = 'password' + input[1].value;
-    } else {
-      if (input[0].value != sessionStorage.getItem('username')) {
-        input[0].nextElementSibling.textContent = 'Username NOT match';
-        setTimeout(() => {
-          input[0].nextElementSibling.textContent = '';
-        }, 2000);
-      }
-      if (input[1].value != sessionStorage.getItem('password')) {
-        input[1].nextElementSibling.textContent = 'Passwod NOT match';
-        setTimeout(() => {
-          input[1].nextElementSibling.textContent = '';
-        }, 2000);
-      }
+let inputs = document.querySelectorAll('input');
+let logInBtn = document.querySelector('#log-in');
+let checkID = sessionStorage.getItem('id');
+let checkBtn = document.querySelector('#log-in');
+
+logInBtn.onclick = (e) => {
+  e.preventDefault();
+  let id = inputs[0].value;
+  let password = inputs[1].value;
+
+  if (id && password) {
+    if (password === localStorage.getItem(id)) {
+      sessionStorage.setItem('id', id);
+      alert('로그인되었습니다.');
+      window.location.href = '/';
     }
-  } else {
-    if (input[0].value !== '') {
-      input[0].nextElementSibling.textContent = 'Username is empty';
+    if (localStorage.getItem(id) === null) {
+      console.log(localStorage.getItem(id));
+      inputs[0].nextElementSibling.textContent = 'Username NOT match';
       setTimeout(() => {
-        input[0].nextElementSibling.textContent = '';
+        inputs[0].nextElementSibling.textContent = '';
       }, 2000);
     }
-    if (input[1].value !== '') {
-      input[1].nextElementSibling.textContent = 'Password is empty';
+    if (password !== localStorage.getItem(id)) {
+      inputs[1].nextElementSibling.textContent = 'Passwod NOT match';
       setTimeout(() => {
-        input[1].nextElementSibling.textContent = '';
+        inputs[1].nextElementSibling.textContent = '';
+      }, 2000);
+    }
+  } else {
+    if (id === '') {
+      inputs[0].nextElementSibling.textContent = 'Username is empty';
+      setTimeout(() => {
+        inputs[0].nextElementSibling.textContent = '';
+      }, 2000);
+    }
+    if (password === '') {
+      inputs[1].nextElementSibling.textContent = 'Password is empty';
+      setTimeout(() => {
+        inputs[1].nextElementSibling.textContent = '';
       }, 2000);
     }
   }
