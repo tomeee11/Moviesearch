@@ -49,6 +49,8 @@ function getMovies(){
                                 <div class="p-5 mb-4  rounded-3" id='card_main' >
                                   <div class="col-md-3">
                                     <img src="${imgUrl +  poster_path}" class="mw-100 rounded-3 " alt="${title}}">
+                                    <button type="button" class="btn btn-danger" id="imgbtn" onclick="location.href='#'">
+                                    예매하기</button>
                                   </div>
                                   <div class="col-md-7">
                                     <h1 class="h1title">${title}</h1>
