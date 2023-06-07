@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2? family=Poppins:wght@200;400;700;&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Rakkas&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -10,17 +9,19 @@
 }
 
 body {
-  background-color: var(--primary-color);
-  font-family: "Poppins", sans-serif;
   margin: 0;
+  background-color: var(--primary-color);
+  font-family: "Rakkas", cursive;
 }
 
 header {
   padding: 1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   background-color: var(--secondary-color);
 }
+
+
 
 .search {
   background-color: transparent;
@@ -30,11 +31,15 @@ header {
   font-size: 1rem;
   color: #fff;
   font-family: inherit;
+  width: 100%;
+  margin-left: 125px;
+  max-width: 300px;
 }
 
 .search:focus {
   outline: 0;
   background-color: var(--primary-color);
+  border:2px solid #1f8f9c;
 }
 
 .search::placeholder {
@@ -55,6 +60,11 @@ main {
   background-color: var(--secondary-color);
   position: relative;
   overflow: hidden;
+  cursor:pointer; 
+}
+
+.movie:hover{
+  box-shadow:0 0 7px white;
 }
 
 .movie img {
@@ -107,4 +117,45 @@ main {
 
 .movie:hover .overview {
   transform: translateY(0);
+
+}
+
+#tags {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.tag {
+  color: white;
+  padding: 10px 20px;
+  background-color: black;
+  border-radius: 4px;
+  margin: 20px;
+  display: inline-block;
+  cursor: pointer;   
+  /* 손가락 모양 (클릭 가능한 버튼) */
+}
+
+.tag.highlight {
+  background-color: var(--secondary-color);
+  box-shadow:0 0 5px white;
+  color:yellow;
+}
+
+#maintitle {
+  width: 100%;
+  display: flex;
+  color: white;
+  position: center;
+  cursor: pointer;
+}
+
+#maintitle2 {
+  font-weight: 500;
+  font-size: xxx-large;
+  color: white;
 }
