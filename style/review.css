@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #22254b;
+  --secondary-color: #373b69;
+}
+
+input,
+textarea {
+  background-color: #5b61a7;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: wheat;
+}
+
+button {
+  color: white;
+  background-color: black;
+  padding: 15px 20px;
+  height: fit-content;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: rgb(53, 53, 53);
+}
+
+.review-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  background-color: var(--secondary-color);
+  padding: 15px 15px;
+  border-radius: 10px;
+}
+
+.review-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.review-input {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+.review-form input {
+  padding: 10px;
+}
+
+.review-form textarea {
+  width: 90%;
+  font-size: large;
+  height: 140px;
+  resize: none;
+  padding: 15px;
+}
+
+.review-list {
+  margin-top: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.review-card {
+  width: 100%;
+  height: 100px;
+  margin: 20px auto;
+  border-bottom: 1px solid #c1bcba;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+.button-wrap {
+  display: flex;
+  flex-direction: column;
+}
