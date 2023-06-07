@@ -9,8 +9,7 @@ btnReg.onclick = (e) => {
 
   if (password === passwordCh.value) {
     if (storageId === null) {
-      localStorage.setItem('id', id);
-      localStorage.setItem('password', password);
+      localStorage.setItem(id, password);
       alert('등록되었습니다.');
       window.location.href = 'login.html';
     } else {
@@ -39,6 +38,7 @@ const backgroundBody = document.body;
 function changeBackgroundImage() {
   const randomImagePath =
     imagePaths[Math.floor(Math.random() * imagePaths.length)];
+
   backgroundBody.style.backgroundImage = `url('${randomImagePath}')`;
 }
 
