@@ -1,7 +1,3 @@
-window.onload = () => {
-  sessionStorage.setItem('logined', 'false');
-};
-
 let inputs = document.querySelectorAll('input');
 let logInBtn = document.querySelector('#log-in');
 

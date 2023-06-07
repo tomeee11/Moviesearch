@@ -65,6 +65,10 @@ main {
   background-color: var(--secondary-color);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+}
+.movie:hover {
+  box-shadow: 0 0 10px white;
 }
 
 .movie img {
@@ -130,10 +134,10 @@ main {
 
 .tag {
   color: white;
-  padding: 15px 20px;
+  padding: 10px 20px;
   background-color: black;
   border-radius: 4px;
-  margin: 15px;
+  margin: 20px;
   display: inline-block;
   cursor: pointer;
   /* 손가락 모양 (클릭 가능한 버튼) */
@@ -141,6 +145,8 @@ main {
 
 .tag.highlight {
   background-color: var(--secondary-color);
+  box-shadow: 0 0 5px white;
+  color: yellow;
 }
 
 #maintitle {
