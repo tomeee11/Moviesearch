@@ -11,15 +11,19 @@
       media="screen"
       href="style/style.css"
     />
-    <script type="module" src="js/main.js" defer></script>
   </head>
-
   <body>
     <header>
+      <a href="#" class="logo">HELLO CINEMA WORLD</a>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">home</a></li>
+          <li><a href="login.html">로그인</a></li>
+          <li><a href="signin.html">회원가입</a></li>
+          <li><a href="booking.html">예매하기</a></li>
+        </ul>
+      </nav>
       <form id="form">
-        <div id="maintitle">
-          <p id="maintitle2">HELLO CINEMA WORLD</p>
-        </div>
         <input type="text" placeholder="Search" id="search" class="search" />
       </form>
     </header>
@@ -72,5 +76,6 @@
         <div class="overview">이곳에 영화 줄거리 표시</div>
       </div>
     </main>
+    <script src="js/main.js"></script>
   </body>
 </html>
