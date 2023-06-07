@@ -1,62 +1,136 @@
 let n = 0;
 
-const gridReview = async () => {
+const firebaseConfig = {
+  apiKey: 'AIzaSyCpR_bu8eUhHaT8crSmszFjyORG7lHrjgI',
+  authDomain: 'movie-dd01e.firebaseapp.com',
+  projectId: 'movie-dd01e',
+  storageBucket: 'movie-dd01e.appspot.com',
+  messagingSenderId: '377347522460',
+  appId: '1:377347522460:web:34c1acfd33399658a6d259',
+  measurementId: 'G-E4PCWVB28J',
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+
+function readReviews(movieId) {
+  reviews = {};
+  firebase
+    .firestore()
+    .collection('movies')
+    .doc(movieId)
+    .collection('reviews')
+    .orderBy('timestamp')
+    .get()
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        console.log(doc.id, ' => ', doc.data());
+        let element = document.querySelector('.review-list');
+
+        data = doc.data();
+        let template = `
+                        <div class='review-card' >
+                          <div class='card-dedail-wrap'>
+                            <h3>${data.userName}</h3>
+                            <p>${data.content}</p>
+                          </div>
+                          <div class="button-wrap">
+                            ${
+                              data.userName === sessionStorage.getItem('id')
+                                ? `<button
+                                  type=""
+                                  id="search-btn"
+                                  onclick="onClickDelBtn('${doc.id}')"
+                                >
+                                  삭제
+                                </button>`
+                                : ``
+                            }
+                          </div>
+                        </div>
+                        `;
+        element.insertAdjacentHTML('afterbegin', template);
+      });
+    })
+    .catch(function (error) {
+      console.log('Error getting reviews: ', error);
+    });
+}
+
+function writeReview(movieId, review, userName) {
+  firebase
+    .firestore()
+    .collection('movies')
+    .doc(movieId)
+    .collection('reviews')
+    .add({
+      content: review,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      userName: userName,
+    })
+    .then(function (docRef) {
+      console.log('Review written with ID: ', docRef.id);
+    })
+    .catch(function (error) {
+      console.error('Error adding review: ', error);
+    });
+}
+
+function deleteReview(movieId, reviewId) {
+  console.log(reviewId);
+  firebase
+    .firestore()
+    .collection('movies')
+    .doc(movieId)
+    .collection('reviews')
+    .doc(reviewId)
+    .delete()
+    .then(function () {
+      console.log('Review deleted successfully.');
+    })
+    .catch(function (error) {
+      console.log('Error deleting review: ', error);
+    });
+}
+
+const gridReview = async (id) => {
   let element = document.querySelector('.review-list');
   // 현제 페이지에서 카드들 삭제
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
 
-  const reviewData = getReview(searchUrl) || [];
-  console.log(searchUrl);
-  reviewData.forEach((data) => {
-    let template = `
-    <div class='review-card' >
-      <div class='card-dedail-wrap'>
-        <h3>${data.name}</h3>
-        <p>${data.comment}</p>
-      </div>
-      <div class="button-wrap">
-        <button type="" id="search-btn" onclick="onClickDelBtn(${i})">삭제</button>
-      </div>
-    </div>
-    `;
-    element.insertAdjacentHTML('afterbegin', template);
-  });
+  readReviews(id);
 };
 
-const reviewInputHandler = (e) => {
+const reviewInputHandler = async (e) => {
   e.preventDefault();
   let input = {
     name: sessionStorage.getItem('id'),
     comment: document.getElementById('review-text').value,
   };
-
   if (input.comment === '') {
     alert('리뷰를 입력해주세요');
     return;
+  } else if (!input.name) {
+    alert('로그인 후 작성이 가능합니다.');
+    return;
   }
+  await writeReview(searchUrl, input.comment, input.name);
 
-  localStorage.setItem(localStorage.length, JSON.stringify(input));
-
-  postReview(searchUrl, 0, input.comment, input.name);
-  gridReview();
+  gridReview(searchUrl);
   document.getElementById('review-text').value = '';
 };
 
 const onClickDelBtn = async (num) => {
-  const input = prompt('비밀번호');
-  data = JSON.parse(localStorage.getItem(num));
-  if (input === data.password) {
-    alert('삭제했습니다.');
-    gridReview();
-  } else {
-    alert('비밀번호가 틀렸습니다.');
-  }
+  await deleteReview(searchUrl, num);
+  gridReview(searchUrl);
 };
 
 // const urlParams = new URLSearchParams(window.location.search);
 // console.log(urlParams.get('id'));
 window.onload = async () => {
-  gridReview();
+  gridReview(searchUrl);
 };

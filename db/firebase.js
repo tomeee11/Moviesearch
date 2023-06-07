@@ -20,24 +20,84 @@ const app = firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 
-const getReview = (id) => {
-  db.collection('comment')
-    .doc(id)
+function readReviews(movieId) {
+  reviews = {};
+  firebase
+    .firestore()
+    .collection('movies')
+    .doc(movieId)
+    .collection('reviews')
+    .orderBy('timestamp')
     .get()
-    .then((result) => {
-      return result.data();
-    });
-};
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        console.log(doc.id, ' => ', doc.data());
+        let element = document.querySelector('.review-list');
 
-const postReview = (movieId, commentId, comment, userName) => {
-  console.log(movieId, commentId, comment, userName);
-  db.collection('comment', movieId).add({
-    commentId,
-    comment,
-    userName,
-  });
-};
+        data = doc.data();
+        let template = `
+                        <div class='review-card' >
+                          <div class='card-dedail-wrap'>
+                            <h3>${data.userName}</h3>
+                            <p>${data.content}</p>
+                          </div>
+                          <div class="button-wrap">
+                            ${
+                              data.userName === sessionStorage.getItem('id')
+                                ? `<button
+                                  type=""
+                                  id="search-btn"
+                                  onclick="onClickDelBtn('${doc.id}')"
+                                >
+                                  삭제
+                                </button>`
+                                : ``
+                            }
+                          </div>
+                        </div>
+                        `;
+        element.insertAdjacentHTML('afterbegin', template);
+      });
+    })
+    .catch(function (error) {
+      console.log('Error getting reviews: ', error);
+    });
+}
+
+function writeReview(movieId, review, userName) {
+  firebase
+    .firestore()
+    .collection('movies')
+    .doc(movieId)
+    .collection('reviews')
+    .add({
+      content: review,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      userName: userName,
+    })
+    .then(function (docRef) {
+      console.log('Review written with ID: ', docRef.id);
+    })
+    .catch(function (error) {
+      console.error('Error adding review: ', error);
+    });
+}
 
 const deleteReview = (movieId, commentId) => {
   db.collection('comment').doc(movieId).collection(commentId).remove();
 };
+
+function deleteReview(movieId, reviewId) {
+  firebase
+    .firestore()
+    .collection('movies')
+    .doc(movieId)
+    .collection('reviews')
+    .delete(reviewId)
+    .then(function () {
+      console.log('Review deleted successfully.');
+    })
+    .catch(function (error) {
+      console.log('Error deleting review: ', error);
+    });
+}
