@@ -1,4 +1,4 @@
-export const API_KEY = "api_key=d1f32f92c639fd0ff4f4bcc363027a26";
+const API_KEY = "api_key=d1f32f92c639fd0ff4f4bcc363027a26";
 const BASE_URL = "https://api.themoviedb.org/3";
 const API_URL =
   BASE_URL +
@@ -49,7 +49,6 @@ const form = document.getElementById("form");
 const search = document.getElementById("search");
 const tagsEl = document.getElementById("tags");
 
-
 let selectedGenre = [];
 setGenre();
 function setGenre() {
@@ -67,13 +66,10 @@ function setGenre() {
           selectedGenre.forEach((id, index) => {
             if (id == genre.id) {
               selectedGenre.splice(index, 1);
-
-            } //else {
-            //   selectedGenre.push(genre.id);  <<-----else의 겨우가 나올 수 없음 ㅡ>삭제,수정
-            // }
+            } else {
+              selectedGenre.push(genre.id);
+            }
           });
-        } else {
-          selectedGenre.push(genre.id);   // <<------새로운 장르 추가, 여기에 와야됩니다. 
         }
       }
       console.log(selectedGenre);
@@ -84,10 +80,6 @@ function setGenre() {
   });
 }
 // function으로 객체화한 영화 장르를 forEach로 html에 표현
-
-
-
-
 
 function highlightselction() {
   const tags = document.querySelectorAll(".tag");
@@ -104,11 +96,6 @@ function highlightselction() {
 
 getMovies(API_URL);
 
-let mainTitle = document.querySelector('#maintitle2');
-mainTitle.addEventListener('click', () => {
-  window.location.reload();
-})   //일단 홈페이지 초기화 되도록 바꿔 놓음  
-
 function getMovies(url) {
   fetch(url)
     .then((res) => res.json())
@@ -117,9 +104,7 @@ function getMovies(url) {
       showMovies(data.results);
     });
 }
-
-let nowId;
-
+let a = document.getElementById("maintitle3")
 function showMovies(data) {
   main.innerHTML = "";
   data.forEach((movie) => {
@@ -138,7 +123,11 @@ function showMovies(data) {
       ${overview}
     </div>
     </div>`;
-
+    movieE1.onclick = () => {
+      alert("영화ID :"+id)
+      location.href=`subindex.html?id=${id}`
+      
+    };
     main.appendChild(movieE1);
   });
 }
@@ -166,5 +155,3 @@ form.addEventListener("submit", (e) => {
     getMovies(API_URL);
   }
 });
-
-
