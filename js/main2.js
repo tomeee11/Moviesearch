@@ -1,9 +1,6 @@
-window.onload = () => {
-  let id = sessionStorage.getItem('id');
-  let logined = sessionStorage.getItem('logined');
-  let navList = document.querySelector('.navbar>ul');
-  checkLogin(logined, navList, id);
-};
+let id = sessionStorage.getItem('id');
+let logined = sessionStorage.getItem('logined');
+let navList = document.querySelector('.navbar>ul');
 
 const checkLogin = (logined, navList, id) => {
   if (logined === 'true') {
@@ -19,11 +16,14 @@ const checkLogin = (logined, navList, id) => {
   }
 };
 
+checkLogin(logined, navList, id);
+
 const logout = () => {
   sessionStorage.setItem('logined', 'false');
   sessionStorage.removeItem('id');
-  window.location.reload();
+  window.location.href = 'index.html';
 };
+//......................................................여기 까지 로그인 여부 확인기능....................................................
 
 const API_KEY = 'api_key=d1f32f92c639fd0ff4f4bcc363027a26';
 const BASE_URL = 'https://api.themoviedb.org/3';
