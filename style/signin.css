@@ -1,193 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap');
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+form {
+  width: 600px;
+  margin: 200px auto;
+}
+div {
+  width: 100%;
+  margin: 15px auto;
 }
 
-ol,
-ul {
-  list-style: none;
+label {
+  display: block;
+  padding: 20px;
+  font-size: 20px;
 }
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-* {
-  background: #373b69;
-}
-body {
-  width: 75rem;
-  height: 65rem;
-  margin: 0px auto;
-  background-size: 100% 65rem;
-  background-position: center;
-  box-shadow: 0 0 40px black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#wrap {
-  width: 22rem;
-  background: none;
-}
-
-#signin_wrap {
-  width: 22rem;
-  height: 22.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  background: rgba(55, 59, 105, 0.4);
-  box-shadow: 0px 3px 20px white;
-}
-h1 {
-  font-family: 'Nanum Myeongjo', serif;
-  width: 9.3rem;
-  margin: 1.5rem auto;
-  color: white;
-  background: rgba(255, 255, 255, 0);
-}
-#id_set,
-#password_set,
-#check_password {
-  width: 18.8rem;
-  height: 3.1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  background: rgba(255, 255, 255, 0);
-  margin: 1.2rem 1.5rem 0px 1.5rem;
-  color: #565656;
-}
-
 input {
-  height: 2rem;
-  padding-left: 0.5rem;
-  background: white;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0px 0px 7px yellow;
-  font-weight: bold;
+  width: 96%;
+  padding: 10px;
+  border: 1px solid #797979;
+  margin-left: 20px;
+  border-radius: 3px;
+  background-color: #373b69;
+  color: white;
 }
-input:focus {
+button {
+  padding: 10px;
+  width: 4.5rem;
+  border: none;
   outline: none;
-}
-
-#btns {
-  width: 10rem;
-  margin: 2.5rem auto;
-  background: none;
-  display: flex;
-  justify-content: center;
-}
-#btns p {
-  display: inline-block;
-  background: none;
-  margin-left: 0.2rem;
-  color: rgba(255, 255, 255, 1);
-  font-size: 1.5rem;
-  padding: 3px;
-  width: 3.5rem;
-  line-height: 1.25rem;
-  border: none;
-  font-weight: bold;
-  font-family: 'Nanum Myeongjo', serif;
   cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: whitesmoke;
+  background: linear-gradient(90deg, #55555f, #373b69);
+}
+#signin {
+  position: absolute;
+  left: 57%;
+}
+#home {
+  position: absolute;
+  left: 62%;
+}
+span {
+  display: block;
+  margin-left: 20px;
+  color: red;
+  font-style: italic;
 }
 
-#btns p:hover {
+body {
+  background-color: #22254b;
   color: white;
 }

@@ -187,6 +187,7 @@ header .logo {
 }
 
 header .navbar ul {
+  width: 31rem;
   list-style: none;
 }
 
@@ -203,6 +204,17 @@ header .navbar ul li a {
 }
 
 header .navbar ul li a:hover {
-  background: #333;
-  color: #fff;
+  color: yellow;
+  cursor: pointer;
+  height: 1.5rem;
+}
+
+.welcome {
+  line-height: 2.5;
+  color: yellow;
+}
+
+.logout {
+  line-height: 0;
+  margin-left: 2rem;
 }

@@ -15,6 +15,7 @@ logInBtn.onclick = (e) => {
   if (id && password) {
     if (password === localStorage.getItem(id)) {
       sessionStorage.setItem('id', id);
+      sessionStorage.setItem('logined', 'true');
       alert('로그인되었습니다.');
       window.location.href = '/';
     }
