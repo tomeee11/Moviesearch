@@ -74,6 +74,7 @@ main {
 
 .movie-info h3 {
   margin-top: 0;
+  font-size: 15px;
 }
 
 .movie-info span {
@@ -210,4 +211,35 @@ header .logo {
   right: 320px;
   width: auto;
   height: auto;
+}
+
+#big p {
+  font-size: larger;
+  color: white;
+  margin: 0;
+}
+
+#log-in {
+  margin: 20px;
+  padding: 10px;
+  width: 100px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: var(--secondary-color);
+}
+
+.modal-body {
+  background-color: var(--secondary-color);
+  color: white;
+  text-align: center;
+}
+
+#loginedId {
+  color: yellow;
+  font-weight: bold;
 }

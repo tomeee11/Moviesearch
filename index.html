@@ -26,6 +26,7 @@
   <body id="body2">
     <header id="big">
       <a href="index.html" class="logo">HELLO CINEMA WORLD</a>
+      <div id="welcome-txt"></div>
 
       <button
         type="button"
@@ -59,13 +60,18 @@
             </div>
             <div class="modal-body">
               <form action="index.html" method="text">
-                <div>
-                  <label for="username">계정을 입력해주세요 : </label>
-                  <input type="text" name="username" placeholder="username" />
+                <div class="mb-2">
+                  <label for="username">ID :&nbsp;&nbsp; </label>
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="username"
+                    id="inptuID"
+                  />
                   <span></span>
                 </div>
                 <div>
-                  <label for="password">비밀번호를 입력해주세요 : </label>
+                  <label for="password">PW : </label>
                   <input
                     type="password"
                     name="password"
@@ -76,15 +82,8 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
               <button type="button" class="btn btn-primary" id="log-in">
-                Log-in
+                로그인
               </button>
             </div>
           </div>

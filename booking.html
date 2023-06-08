@@ -1,33 +1,145 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>영화관 좌석 예매</title>
-    <style>
-      .seat {
-        width: 30px;
-        height: 30px;
-        margin: 2px;
-        background-color: lightgray;
-        display: inline-block;
-        cursor: pointer;
-      }
-
-      .selected {
-        background-color: black;
-      }
-
-      .reserved {
-        background-color: red;
-        cursor: not-allowed;
-      }
-    </style>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>My Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="style/booking.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
   </head>
+
   <body>
-    <h2>좌석을 선택해주세요</h2>
-    <div id="seatMap">
-      <!-- 좌석들이 동적으로 생성될 공간 -->
+    <div id="title">
+      <header id="big" class="d-flex">
+        <a href="index.html" class="logo">HELLO CINEMA WORLD</a>
+        <div id="welcome-txt"></div>
+
+        <div class="nav-buttons d-flex flex-row row-gap-4">
+          <div class="button-group me-2">
+            <button
+              type="button"
+              class="btn btn-dark"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              id="loginbar"
+            >
+              로그인
+            </button>
+          </div>
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    로그인
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form action="index.html" method="text">
+                    <div>
+                      <label for="username">계정을 입력해주세요 : </label>
+                      <input
+                        type="text"
+                        name="username"
+                        placeholder="username"
+                      />
+                      <span></span>
+                    </div>
+                    <div>
+                      <label for="password">비밀번호를 입력해주세요 : </label>
+                      <input
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                      />
+                      <span></span>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary" id="log-in">
+                    Log-in
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <form id="form" class="mx-2">
+            <input
+              type="text"
+              placeholder="Search"
+              id="search"
+              class="search"
+            />
+          </form>
+        </div>
+      </header>
     </div>
-    <button onclick="reserveSeats()">예매하기</button>
+
+    <div class="booking-wrapper">
+      <div id="screen"></div>
+
+      <div class="booking-seat">
+        <div id="seatMap">
+          <!-- 좌석들이 동적으로 생성될 공간 -->
+        </div>
+        <button
+          type="button"
+          id="book_btn"
+          class="btn btn-danger mx-auto"
+          onclick="reserveSeats()"
+        >
+          예매하기
+        </button>
+      </div>
+      <div class="d-flex flex-column text-white book-wrap">
+        <h3 class="text-center p-2">예매내역</h3>
+        <div class="p-2" id="book_modal ">
+          <ul id="book_list">
+            <li><span>아이디:</span></li>
+            <li><span>예약하신 영화:</span></li>
+            <li><span>예약한 좌석:</span></li>
+            <li><span>결제하신 금액:</span></li>
+          </ul>
+          <img
+            src="https://res.cloudinary.com/dyhnnmhcf/image/upload/v1686233773/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-06-08_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_11.15.55_kvyuzv.png"
+            alt=""
+            class="image-book"
+          />
+        </div>
+      </div>
+    </div>
+
     <script src="js/booking.js"></script>
   </body>
 </html>

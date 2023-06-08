@@ -1,0 +1,229 @@
+:root {
+  --primary-color: #22254b;
+  --secondary-color: #373b69;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: capitalize;
+  text-decoration: none;
+  list-style: none;
+}
+
+header {
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--secondary-color);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 7%;
+  align-items: center;
+  justify-content: center;
+  z-index: 14;
+}
+
+.booking-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5rem;
+  margin-left: 1rem;
+}
+
+.booking-seat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem 0 0 0;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: white !important;
+}
+
+#movie_url {
+  width: 22rem;
+}
+
+.booking-seat button {
+  margin-top: 0.6rem !important;
+}
+
+#book_modal {
+  width: 25rem;
+  height: 30rem;
+  padding: 2rem;
+}
+
+#welcome-txt {
+  display: inline;
+}
+#welcome {
+  display: inline;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--primary-color) !important;
+}
+
+#loginedId {
+  color: yellow;
+  font-weight: bold;
+}
+
+header {
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--secondary-color);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+header .logo {
+  font-weight: bolder;
+  font-size: 25px;
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.welcome {
+  line-height: 2.5;
+  color: yellow;
+}
+
+.logout {
+  line-height: 0;
+  margin-right: 20rem;
+}
+
+#loginbar {
+  right: 400px;
+  background-color: var(--primary-color);
+  border: none;
+  width: auto;
+  height: auto;
+}
+
+#signbar {
+  text-decoration: none;
+  color: #fff;
+  background-color: var(--primary-color);
+  display: flex;
+  box-sizing: border-box;
+  border: 6px solid;
+  text-align: center;
+  border-radius: 5px;
+  border-color: var(--primary-color);
+  right: 320px;
+  width: auto;
+  height: auto;
+}
+
+#big p {
+  font-size: larger;
+  color: white;
+  margin: 0;
+}
+
+#log-in {
+  margin: 20px;
+  padding: 10px;
+  width: 100px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  color: whitesmoke;
+  background: linear-gradient(90deg, #22254b, #fff);
+}
+#welcome-txt {
+  display: flex;
+  width: fit-content;
+}
+.button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem !important;
+}
+
+.seat {
+  width: 3rem;
+  height: 3rem;
+  margin: 2px;
+  text-align: center;
+  line-height: 3.25;
+  background-color: lightgray;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: black;
+}
+
+.reserved {
+  background-color: red;
+  cursor: not-allowed;
+}
+
+.search {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  color: #fff;
+  font-family: inherit;
+  width: fit-content;
+  margin-right: 1rem;
+  max-width: 300px;
+}
+
+.search:focus {
+  outline: 0;
+  background-color: var(--primary-color);
+}
+
+.search::placeholder {
+  color: #7378c5;
+}
+
+.book-wrap {
+  background-color: #515598 !important;
+}
+
+#book_list {
+  color: white;
+  font-size: large;
+}
+
+#book_list li {
+  margin-top: 1.5rem;
+}
+
+.image-book {
+  display: flex;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+}
+#book_list li span {
+  margin-right: 1.25rem;
+  font-weight: bold;
+}

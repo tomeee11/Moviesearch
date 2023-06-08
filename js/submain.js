@@ -7,6 +7,27 @@ const apiKey = '?api_key=ad896f181b664e3c71e0096a111a52f2';
 const searchKey = baseUrl + searchUrl + apiKey;
 const imgUrl = 'https://image.tmdb.org/t/p/w500';
 
+let id = sessionStorage.getItem('id');
+let logined = sessionStorage.getItem('logined');
+let logInBtn2 = document.querySelector('#loginbar');
+const header = document.querySelector('#welcome-txt');
+
+const checkLogin = (logined, id) => {
+  if (logined === 'true') {
+    logInBtn2.innerText = `로그아웃`;
+    const welcome = document.createElement('p');
+    welcome.innerHTML = `<span id="loginedId">${id}</span> 님 환영합니다!`;
+    header.append(welcome);
+    logInBtn2.setAttribute('data-bs-toggle', '');
+    logInBtn2.onclick = () => {
+      sessionStorage.setItem('logined', 'false');
+      sessionStorage.removeItem('id');
+      window.location.reload();
+    };
+  }
+};
+checkLogin(logined, id);
+
 function getColor(vote) {
   if (vote >= 8) {
     return 'green';
@@ -56,7 +77,7 @@ function getMovies() {
                                   <div class="col-md-7">
                                     <h1 class="h1title">${title}</h1>
                                     <button id="btn" type="button" class="btn btn-danger btn-lg"
-                                    onclick="location.href ='booking.html'">예매하기</button>
+                                    onclick="onClickBookBtn()">예매하기</button>
                                     <p class="fs-2">${tagline} </p>
                                     <p class="fs-2"> release_date : ${release_date} </p>
                                     <p class="poverview">${overview}</p>
@@ -68,4 +89,61 @@ function getMovies() {
     .catch((err) => console.error(err));
 }
 
+function onClickBookBtn() {
+  console.log(sessionStorage.logined);
+  if (sessionStorage.id) {
+    location.href = '/booking.html';
+  } else {
+    alert('예매를 위해 로그인 해주세요 ');
+  }
+}
+
 getMovies();
+
+//-------
+let inputs = document.querySelectorAll('input');
+let logInBtn = document.querySelector('#log-in');
+let checkID = sessionStorage.getItem('id');
+let checkBtn = document.querySelector('#log-in');
+
+logInBtn.onclick = (e) => {
+  e.preventDefault();
+  let id = inputs[0].value;
+  let password = inputs[1].value;
+
+  if (id && password) {
+    if (password === localStorage.getItem(id)) {
+      sessionStorage.setItem('id', id);
+      sessionStorage.setItem('logined', 'true');
+      alert('로그인되었습니다.');
+      window.location.href = '/';
+    }
+    if (localStorage.getItem(id) === null) {
+      console.log(localStorage.getItem(id));
+      inputs[0].nextElementSibling.textContent = 'ID가 일치하지 않습니다.';
+      setTimeout(() => {
+        inputs[0].nextElementSibling.textContent = '';
+      }, 2000);
+    }
+    if (password !== localStorage.getItem(id)) {
+      inputs[1].nextElementSibling.textContent =
+        '비밀번호가 일치하지 않습니다.';
+      setTimeout(() => {
+        inputs[1].nextElementSibling.textContent = '';
+      }, 2000);
+    }
+  } else {
+    if (id === '') {
+      inputs[0].nextElementSibling.textContent = 'ID를 입력해주세요.';
+      setTimeout(() => {
+        inputs[0].nextElementSibling.textContent = '';
+      }, 2000);
+    }
+    if (password === '') {
+      inputs[1].nextElementSibling.textContent = '비밀번호를 입력해주세요.';
+      setTimeout(() => {
+        inputs[1].nextElementSibling.textContent = '';
+      }, 2000);
+    }
+  }
+};

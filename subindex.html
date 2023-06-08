@@ -27,16 +27,73 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
   </head>
   <body>
-    <header>
-      <a href="#" class="logo">HELLO CINEMA WORLD</a>
-      <nav class="navbar">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="login.html">로그인</a></li>
-          <li><a href="signin.html">회원가입</a></li>
-          <!-- <li><a href="booking.html">예매하기</a></li> -->
-        </ul>
-      </nav>
+    <header id="big">
+      <a href="index.html" class="logo">HELLO CINEMA WORLD</a>
+      <div id="welcome-txt"></div>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        id="loginbar"
+      >
+        로그인
+      </button>
+      <a href="signin.html" id="signbar">회원가입</a>
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">로그인</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form action="index.html" method="text">
+                <div class="mb-2">
+                  <label for="username">ID :&nbsp;&nbsp; </label>
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    id="inptuID"
+                  />
+                  <span></span>
+                </div>
+                <div>
+                  <label for="password">PW : </label>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    class="inputPW"
+                  />
+                  <span></span>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="log-in">
+                로그인
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <form id="form">
         <input type="text" placeholder="Search" id="search" class="search" />
       </form>
