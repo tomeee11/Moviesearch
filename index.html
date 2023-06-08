@@ -11,18 +11,86 @@
       media="screen"
       href="style/style.css"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body>
-    <header>
-      <a href="#" class="logo">HELLO CINEMA WORLD</a>
-      <nav class="navbar">
-        <ul>
-          <li><a href="index.html">home</a></li>
-          <li><a id="loginTag" href="login.html">로그인</a></li>
-          <li><a href="signin.html">회원가입</a></li>
-          <li><a href="booking.html">예매하기</a></li>
-        </ul>
-      </nav>
+  <body id="body2">
+    <header id="big">
+      <a href="index.html" class="logo">HELLO CINEMA WORLD</a>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        id="loginbar"
+      >
+        로그인
+      </button>
+      <a href="signin.html" id="signbar">회원가입</a>
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">로그인</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form action="index.html" method="text">
+                <div>
+                  <label for="username">계정을 입력해주세요 : </label>
+                  <input type="text" name="username" placeholder="username" />
+                  <span></span>
+                </div>
+                <div>
+                  <label for="password">비밀번호를 입력해주세요 : </label>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="password"
+                  />
+                  <span></span>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary" id="log-in">
+                Log-in
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <form id="form">
         <input type="text" placeholder="Search" id="search" class="search" />
       </form>

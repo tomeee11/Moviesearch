@@ -12,19 +12,10 @@
   --secondary-color: #373b69;
 }
 
-body {
+#body2 {
   margin: 0;
   background-color: var(--primary-color);
-  /* font-family: 'Rakkas', cursive; */
 }
-
-/* header {
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  background-color: var(--secondary-color);
-  width: 100%;
-} */
 
 .search {
   background-color: transparent;
@@ -167,7 +158,6 @@ body {
 }
 
 header {
-  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -184,29 +174,7 @@ header .logo {
   font-weight: bolder;
   font-size: 25px;
   color: #fff;
-}
-
-header .navbar ul {
-  width: 31rem;
-  list-style: none;
-}
-
-header .navbar ul li {
-  position: relative;
-  float: left;
-}
-
-header .navbar ul li a {
-  font-size: 20px;
-  padding: 20px;
-  color: #fff;
-  display: block;
-}
-
-header .navbar ul li a:hover {
-  color: yellow;
-  cursor: pointer;
-  height: 1.5rem;
+  text-decoration: none;
 }
 
 .welcome {
@@ -217,4 +185,29 @@ header .navbar ul li a:hover {
 .logout {
   line-height: 0;
   margin-left: 2rem;
+}
+
+#loginbar {
+  position: absolute;
+  right: 400px;
+  background-color: var(--primary-color);
+  border: none;
+  width: auto;
+  height: auto;
+}
+
+#signbar {
+  text-decoration: none;
+  color: #fff;
+  background-color: var(--primary-color);
+  position: absolute;
+  display: flex;
+  box-sizing: border-box;
+  border: 6px solid;
+  text-align: center;
+  border-radius: 5px;
+  border-color: var(--primary-color);
+  right: 320px;
+  width: auto;
+  height: auto;
 }

@@ -11,7 +11,7 @@ btnSign.onclick = (e) => {
       if (storageId === null) {
         localStorage.setItem(id, password);
         alert('등록되었습니다.');
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
       } else {
         document.querySelector('#id').focus();
         alert('사용중인 ID입니다.');

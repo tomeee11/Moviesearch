@@ -1,28 +1,24 @@
 let id = sessionStorage.getItem('id');
 let logined = sessionStorage.getItem('logined');
-let navList = document.querySelector('.navbar>ul');
+let logInBtn2 = document.querySelector('#loginbar');
+const header = document.querySelector('#big');
 
-const checkLogin = (logined, navList, id) => {
+const checkLogin = (logined, id) => {
   if (logined === 'true') {
-    navList.innerHTML = '';
-    let newLi_logout = document.createElement('li');
-    let newLi_id = document.createElement('li');
-    newLi_id.classList.add('welcome');
-    newLi_logout.classList.add('logout');
-    newLi_logout.innerHTML = '<a onclick="logout()">로그아웃</a>';
-    newLi_id.innerText = `${id}님 환영합니다.`;
-    navList.append(newLi_id);
-    navList.append(newLi_logout);
+    logInBtn2.innerText = `로그아웃`;
+    const welcome = document.createElement('p');
+    welcome.innerText = '환영합니다!';
+    header.append();
+    logInBtn2.setAttribute('data-bs-toggle', '');
+    logInBtn2.onclick = () => {
+      sessionStorage.setItem('logined', 'false');
+      sessionStorage.removeItem('id');
+      window.location.reload();
+    };
   }
 };
+checkLogin(logined, id);
 
-checkLogin(logined, navList, id);
-
-const logout = () => {
-  sessionStorage.setItem('logined', 'false');
-  sessionStorage.removeItem('id');
-  window.location.href = 'index.html';
-};
 //......................................................여기 까지 로그인 여부 확인기능....................................................
 
 const API_KEY = 'api_key=d1f32f92c639fd0ff4f4bcc363027a26';
@@ -180,3 +176,51 @@ form.addEventListener('submit', (e) => {
     getMovies(API_URL);
   }
 });
+
+//--------
+
+let inputs = document.querySelectorAll('input');
+let logInBtn = document.querySelector('#log-in');
+let checkID = sessionStorage.getItem('id');
+let checkBtn = document.querySelector('#log-in');
+
+logInBtn.onclick = (e) => {
+  e.preventDefault();
+  let id = inputs[0].value;
+  let password = inputs[1].value;
+
+  if (id && password) {
+    if (password === localStorage.getItem(id)) {
+      sessionStorage.setItem('id', id);
+      sessionStorage.setItem('logined', 'true');
+      alert('로그인되었습니다.');
+      window.location.href = '/';
+    }
+    if (localStorage.getItem(id) === null) {
+      console.log(localStorage.getItem(id));
+      inputs[0].nextElementSibling.textContent = 'Username NOT match';
+      setTimeout(() => {
+        inputs[0].nextElementSibling.textContent = '';
+      }, 2000);
+    }
+    if (password !== localStorage.getItem(id)) {
+      inputs[1].nextElementSibling.textContent = 'Passwod NOT match';
+      setTimeout(() => {
+        inputs[1].nextElementSibling.textContent = '';
+      }, 2000);
+    }
+  } else {
+    if (id === '') {
+      inputs[0].nextElementSibling.textContent = 'Username is empty';
+      setTimeout(() => {
+        inputs[0].nextElementSibling.textContent = '';
+      }, 2000);
+    }
+    if (password === '') {
+      inputs[1].nextElementSibling.textContent = 'Password is empty';
+      setTimeout(() => {
+        inputs[1].nextElementSibling.textContent = '';
+      }, 2000);
+    }
+  }
+};
