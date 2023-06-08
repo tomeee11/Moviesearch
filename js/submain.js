@@ -51,9 +51,12 @@ function getMovies() {
                                     <img src="${
                                       imgUrl + poster_path
                                     }" class="mw-100 rounded-3 " alt="${title}}">
+                                    
                                   </div>
                                   <div class="col-md-7">
                                     <h1 class="h1title">${title}</h1>
+                                    <button id="btn" type="button" class="btn btn-danger btn-lg"
+                                    onclick="location.href ='booking.html'">예매하기</button>
                                     <p class="fs-2">${tagline} </p>
                                     <p class="fs-2"> release_date : ${release_date} </p>
                                     <p class="poverview">${overview}</p>
@@ -61,7 +64,6 @@ function getMovies() {
                                 </div>
                               </div>`;
       submain.appendChild(movieE1);
-      titleP.innerHTML = `${title}`;
     })
     .catch((err) => console.error(err));
 }
