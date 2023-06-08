@@ -1,14 +1,14 @@
 let id = sessionStorage.getItem('id');
 let logined = sessionStorage.getItem('logined');
 let logInBtn2 = document.querySelector('#loginbar');
-const header = document.querySelector('#big');
+const header = document.querySelector('#welcome-txt');
 
 const checkLogin = (logined, id) => {
   if (logined === 'true') {
     logInBtn2.innerText = `로그아웃`;
     const welcome = document.createElement('p');
-    welcome.innerText = '환영합니다!';
-    header.append();
+    welcome.innerHTML = `<span id="loginedId">${id}</span> 님 환영합니다!`;
+    header.append(welcome);
     logInBtn2.setAttribute('data-bs-toggle', '');
     logInBtn2.onclick = () => {
       sessionStorage.setItem('logined', 'false');
@@ -139,7 +139,7 @@ function showMovies(data) {
 
     <div class="movie-info">
       <h3>${title}</h3>
-      <span class="${getColor(vote_average)}">${vote_average}</span>
+      <span class="${getColor(vote_average)}">${Math.floor(vote_average)}</span>
       </div>
       <div class="overview">
       <h3>Overview</h3>
@@ -147,7 +147,8 @@ function showMovies(data) {
     </div>
     </div>`;
     movieE1.onclick = () => {
-      alert('영화ID :' + id);
+      sessionStorage.setItem('title', title);
+      sessionStorage.setItem('url', `${IMG_URL + poster_path}`);
       location.href = `subindex.html?id=${id}`;
       sessionStorage.setItem('movieId', id);
     };
@@ -198,26 +199,27 @@ logInBtn.onclick = (e) => {
     }
     if (localStorage.getItem(id) === null) {
       console.log(localStorage.getItem(id));
-      inputs[0].nextElementSibling.textContent = 'Username NOT match';
+      inputs[0].nextElementSibling.textContent = 'ID가 일치하지 않습니다.';
       setTimeout(() => {
         inputs[0].nextElementSibling.textContent = '';
       }, 2000);
     }
     if (password !== localStorage.getItem(id)) {
-      inputs[1].nextElementSibling.textContent = 'Passwod NOT match';
+      inputs[1].nextElementSibling.textContent =
+        '비밀번호가 일치하지 않습니다.';
       setTimeout(() => {
         inputs[1].nextElementSibling.textContent = '';
       }, 2000);
     }
   } else {
     if (id === '') {
-      inputs[0].nextElementSibling.textContent = 'Username is empty';
+      inputs[0].nextElementSibling.textContent = 'ID를 입력해주세요.';
       setTimeout(() => {
         inputs[0].nextElementSibling.textContent = '';
       }, 2000);
     }
     if (password === '') {
-      inputs[1].nextElementSibling.textContent = 'Password is empty';
+      inputs[1].nextElementSibling.textContent = '비밀번호를 입력해주세요.';
       setTimeout(() => {
         inputs[1].nextElementSibling.textContent = '';
       }, 2000);
