@@ -1,3 +1,30 @@
+let id = sessionStorage.getItem('id');
+let logined = sessionStorage.getItem('logined');
+let navList = document.querySelector('.navbar>ul');
+
+const checkLogin = (logined, navList, id) => {
+  if (logined === 'true') {
+    navList.innerHTML = '';
+    let newLi_logout = document.createElement('li');
+    let newLi_id = document.createElement('li');
+    newLi_id.classList.add('welcome');
+    newLi_logout.classList.add('logout');
+    newLi_logout.innerHTML = '<a onclick="logout()">로그아웃</a>';
+    newLi_id.innerText = `${id}님 환영합니다.`;
+    navList.append(newLi_id);
+    navList.append(newLi_logout);
+  }
+};
+
+checkLogin(logined, navList, id);
+
+const logout = () => {
+  sessionStorage.setItem('logined', 'false');
+  sessionStorage.removeItem('id');
+  window.location.href = 'index.html';
+};
+//......................................................여기 까지 로그인 여부 확인기능....................................................
+
 const API_KEY = 'api_key=d1f32f92c639fd0ff4f4bcc363027a26';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL =
@@ -126,6 +153,7 @@ function showMovies(data) {
     movieE1.onclick = () => {
       alert('영화ID :' + id);
       location.href = `subindex.html?id=${id}`;
+      sessionStorage.setItem('movieId', id);
     };
     main.appendChild(movieE1);
   });
