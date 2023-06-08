@@ -1,5 +1,3 @@
-let n = 0;
-
 const firebaseConfig = {
   apiKey: 'AIzaSyCpR_bu8eUhHaT8crSmszFjyORG7lHrjgI',
   authDomain: 'movie-dd01e.firebaseapp.com',
@@ -10,12 +8,16 @@ const firebaseConfig = {
   measurementId: 'G-E4PCWVB28J',
 };
 
-// Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 
 function readReviews(movieId) {
+  let element = document.querySelector('.review-list');
+  // 현제 페이지에서 카드들 삭제
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
   reviews = {};
   firebase
     .firestore()
@@ -26,9 +28,6 @@ function readReviews(movieId) {
     .get()
     .then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        console.log(doc.id, ' => ', doc.data());
-        let element = document.querySelector('.review-list');
-
         data = doc.data();
         let template = `
                         <div class='review-card' >
@@ -40,6 +39,13 @@ function readReviews(movieId) {
                             ${
                               data.userName === sessionStorage.getItem('id')
                                 ? `<button
+                                  type=""
+                                  id="search-btn"
+                                  onclick="onClickPutBtn('${doc.id}')"
+                                >
+                                  수정
+                                </button>
+                                <button
                                   type=""
                                   id="search-btn"
                                   onclick="onClickDelBtn('${doc.id}')"
@@ -95,15 +101,7 @@ function deleteReview(movieId, reviewId) {
     });
 }
 
-const gridReview = async (id) => {
-  let element = document.querySelector('.review-list');
-  // 현제 페이지에서 카드들 삭제
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
-  }
-
-  readReviews(id);
-};
+const gridReview = async (id) => {};
 
 const reviewInputHandler = async (e) => {
   e.preventDefault();
@@ -120,17 +118,17 @@ const reviewInputHandler = async (e) => {
   }
   await writeReview(searchUrl, input.comment, input.name);
 
-  gridReview(searchUrl);
+  readReviews(searchUrl);
   document.getElementById('review-text').value = '';
 };
 
 const onClickDelBtn = async (num) => {
   await deleteReview(searchUrl, num);
-  gridReview(searchUrl);
+  readReviews(searchUrl);
 };
 
 // const urlParams = new URLSearchParams(window.location.search);
 // console.log(urlParams.get('id'));
 window.onload = async () => {
-  gridReview(searchUrl);
+  readReviews(searchUrl);
 };
