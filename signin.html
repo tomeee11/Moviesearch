@@ -1,33 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="js/signin.js" defer></script>
-    <link href="style/signin.css" rel="stylesheet" />
-
-    <title>Document</title>
+    <title>Nomal log in form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="style/signin.css"
+    />
   </head>
-
   <body>
-    <div id="wrap">
-      <form id="signin_wrap">
-        <h1>회원가입</h1>
-        <div id="id_set">
-          <input type="text" placeholder="사용할 ID" id="id" />
-        </div>
-        <div id="password_set">
-          <input type="password" placeholder="비밀번호" id="password" />
-        </div>
-        <div id="check_password">
-          <input id="password_2" placeholder="비밀번호 확인" type="password" />
-        </div>
-        <div id="btns">
-          <p id="regist">등록</p>
-          <p id="cancel">취소</p>
-        </div>
-      </form>
-    </div>
+    <form action="index.html" method="text">
+      <div>
+        <label for="username">사용할 ID를 입력해주세요.</label>
+        <input type="text" id="id" name="username" placeholder="username" />
+        <span></span>
+      </div>
+      <div>
+        <label for="password">비밀번호를 입력해주세요.</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="password"
+        />
+        <span></span>
+      </div>
+      <div>
+        <label for="password">비밀번호를 확인</label>
+        <input
+          type="password"
+          name="password"
+          id="password_2"
+          placeholder="password"
+        />
+        <span></span>
+      </div>
+      <button id="signin">SignIn</button>
+      <button id="home">Home</button>
+    </form>
   </body>
+  <script src="js/signin.js"></script>
 </html>
