@@ -1,3 +1,4 @@
+const booked = sessionStorage.setItem('booked', 'false');
 const id = sessionStorage.getItem('id');
 const url = sessionStorage.getItem('url');
 const title = sessionStorage.getItem('title');
