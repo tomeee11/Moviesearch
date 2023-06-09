@@ -25,74 +25,91 @@
   </head>
   <body id="body2">
     <header id="big">
-      <a href="index.html" class="logo">HELLO CINEMA WORLD</a>
-      <div id="welcome-txt"></div>
-
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop"
-        id="loginbar"
-      >
-        로그인
-      </button>
-      <a href="signin.html" id="signbar">회원가입</a>
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">로그인</h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <form action="index.html" method="text">
-                <div class="mb-2">
-                  <label for="username">ID :&nbsp;&nbsp; </label>
-                  <input
-                    type="text"
-                    name="username"
-                    placeholder="username"
-                    id="inptuID"
-                  />
-                  <span></span>
-                </div>
-                <div>
-                  <label for="password">PW : </label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                  />
-                  <span></span>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="log-in">
-                로그인
-              </button>
+      <div class="headermain">
+        <div class="headertitle">
+          <a href="index.html" class="logo">HELLO CINEMA WORLD</a>
+        </div>
+        <div class="hederwelcome">
+          <div id="welcome-txt"></div>
+        </div>
+        <div class="headersign">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            id="loginbar"
+          >
+            로그인
+          </button>
+          <button type="button" onclick="location.href='signin.html'" id="signbar">
+            회원가입
+          </button>
+        </div>
+        <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                  로그인
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form action="index.html" method="text">
+                  <div class="mb-2">
+                    <label for="username">ID :&nbsp;&nbsp; </label>
+                    <input
+                      type="text"
+                      name="username"
+                      placeholder="username"
+                      id="inptuID"
+                    />
+                    <span></span>
+                  </div>
+                  <div>
+                    <label for="password">PW : </label>
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="password"
+                    />
+                    <span></span>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="log-in">
+                  로그인
+                </button>
+              </div>
             </div>
           </div>
         </div>
+        <div class="headersearch">
+          <form id="form">
+            <input
+              type="text"
+              placeholder="Search"
+              id="search"
+              class="search"
+            />
+          </form>
+        </div>
       </div>
-
-      <form id="form">
-        <input type="text" placeholder="Search" id="search" class="search" />
-      </form>
     </header>
     <div id="tags">
       <div class="tag">Action</div>
