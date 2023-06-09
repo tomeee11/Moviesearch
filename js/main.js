@@ -1,6 +1,7 @@
 let id = sessionStorage.getItem('id');
 let logined = sessionStorage.getItem('logined');
 let logInBtn2 = document.querySelector('#loginbar');
+let signBtn = document.querySelector('#signbar');
 const header = document.querySelector('#welcome-txt');
 
 const checkLogin = (logined, id) => {
@@ -10,6 +11,7 @@ const checkLogin = (logined, id) => {
     welcome.innerHTML = `<span id="loginedId">${id}</span> 님 환영합니다!`;
     header.append(welcome);
     logInBtn2.setAttribute('data-bs-toggle', '');
+    signBtn.style.display = 'none';
     logInBtn2.onclick = () => {
       sessionStorage.setItem('logined', 'false');
       sessionStorage.removeItem('id');
