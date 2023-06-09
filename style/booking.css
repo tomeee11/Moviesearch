@@ -227,3 +227,6 @@ header .logo {
   margin-right: 1.25rem;
   font-weight: bold;
 }
+.booking-li {
+  margin-right: 0 !important;
+}

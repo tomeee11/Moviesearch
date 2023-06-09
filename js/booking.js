@@ -71,7 +71,7 @@ function reserveSeats() {
     const bookSeats = document.createElement('li');
     const bookPrice = document.createElement('li');
     bookID.innerHTML = `<span>아이디:</span>\t${id}님`;
-    bookTitle.innerHTML = `<span>예약하신 영화:</span>\t${title}`;
+    bookTitle.innerHTML = `<span class='booking-li'>예약하신 영화:</span>\t${title}`;
     const selected = selectedSeats.reduce((a, b) => a + ' , ' + b);
     bookSeats.innerHTML = `<span>예약한 좌석:</span>\t${selected}`;
     const price = 10000 * selectedSeats.length;
